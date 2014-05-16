@@ -1,0 +1,50 @@
+#!/usr/bin/env python
+#python version 2.4.3 - 2.7.1
+#backup
+#cp abc abc_20140514182828_username
+
+import os
+import sys
+import shutil
+import time
+
+code_name = "backup"
+version = "0.1"
+website = "https://github.com/cjsund/lazy_tools"
+
+date_now = str(time.strftime("%Y%m%d%H%M%S"))
+whoami = str(os.getlogin())
+
+help = '''
+Name: %s Version: %s
+How to use?
+	backup src(abs path or Relative path of current path)
+	Like :cp abc abc_20140514182828_username
+
+Website: %s
+          ''' % (code_name, version, website)
+
+def backup(file_name):
+	name = os.path.basename(file_name)
+	if not os.path.exists(file_name):
+		print "\033[31m %s: No such file or directory\033[0m" % name
+		sys.exit(0)
+
+	new_file_name = '_'.join([file_name, date_now, whoami])
+
+	try:
+		if os.path.isfile(file_name):
+			shutil.copyfile(file_name, new_file_name)
+		else:
+			shutil.copytree(file_name, new_file_name)
+	except shutil.Error, e:
+		print e
+
+
+
+
+if len(sys.argv) is 1 or len(sys.argv) >= 3:
+	print help
+else:
+	file_name = sys.argv[1]
+	backup(file_name)
