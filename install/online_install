@@ -13,7 +13,7 @@ checkorder(){
 install(){
 	cd /tmp
 
-	wget $url > /dev/null 2>&1
+	wget $url --no-check-certificate > /dev/null 2>&1
 
 	mv -f backup /usr/bin/backup
 	if [ $? == 0 ]
