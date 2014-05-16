@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #author cjsund@126.com
 
-url="https://github.com/cjsund/lazy_tools/blob/master/bin/backup"
+url="https://raw.githubusercontent.com/cjsund/lazy_tools/master/bin/backup"
 
 checkorder(){
 	if [[ -f "/usr/bin/backup" ]]; then
@@ -14,10 +14,7 @@ install(){
 	cd /tmp
 
 	wget $url > /dev/null 2>&1
-	if [[ $? != 1 ]]; then
-		echo " Failed please check you network! "
-		exit 1
-	fi
+
 	mv backup /usr/bin/backup
 	if [ $? == 0 ]
 	then
