@@ -17,10 +17,27 @@ lazy_tools
 
 	 you only need a order 'backup'
 
-### INSTALL
+### INSTALL and UPDATE
+
+##### install
 
 	git clone https://github.com/cjsund/lazy_tools.git
 	python lazy_tools/install/local_install
+
+ Or:
+
+ 	curl -sSL https://raw.githubusercontent.com/cjsund/lazy_tools/master/install/online_install | bash
+
+#### update
+
+	git pull
+	python lazy_tools/install/local_install update
+
+ Or:
+
+ 	curl -sSL https://raw.githubusercontent.com/cjsund/lazy_tools/master/install/online_install | bash -s update
+
+
 
 ### USE
 
