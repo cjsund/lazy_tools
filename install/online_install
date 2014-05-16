@@ -15,7 +15,7 @@ install(){
 
 	wget $url > /dev/null 2>&1
 
-	mv -r backup /usr/bin/backup
+	mv -f backup /usr/bin/backup
 	if [ $? == 0 ]
 	then
 		echo " Install seccess! "
