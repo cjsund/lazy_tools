@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+#author cjsund@126.com
+
+url="https://github.com/cjsund/lazy_tools/blob/master/bin/backupfdfdfdfd"
+
+checkorder(){
+	if [[ -f "/usr/bin/backup" ]]; then
+		echo "\033[35m backup is already install! \033[0m"
+		exit 1
+	fi
+}
+
+install(){
+	cd /tmp
+
+	wget $url > /dev/null 2>&1
+	if [[ $? != 1 ]]; then
+		echo "\033[35m Failed please check you network! \033[0m"
+		exit 1
+	fi
+	mv backup /usr/bin/backup
+	if [ $? == 0 ]
+	then
+		echo "\033[32m Install seccess! \033[0m"
+	fi
+}
+
+if [[ $# -eq 1 ]]; then
+	case "$1" in
+		update )
+			install
+			;;
+		* )
+			echo "\033[31m Please check option! \033[0m"
+			;;
+	esac
+elif [[ $# -eq 0 ]];then
+	checkorder
+	install
+else
+	echo "\033[31m Please check option! \033[0m"
+fi

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+#author cjsund@126.com
 import os
 import sys
 import stat
@@ -10,12 +10,29 @@ root_path = '/'.join(paths[:len(paths)-1])
 bin_path = os.path.join(root_path, 'bin')
 bin_file = os.listdir(bin_path)
 
-try:
-	for i in bin_file:
-		shutil.copyfile(os.path.join(bin_path, i), "/usr/bin/%s" % i)
-		os.chmod("/usr/bin/%s" % i, stat.S_IRWXU + stat.S_IXGRP + stat.S_IRGRP + stat.S_IROTH + stat.S_IXOTH)
-		print "\033[32m Install success! \033[0m"
-		print "\033[32m cp %s to /usr/bin/%s \033[0m" % (i, i)
-except IOError, e:
-		print "\033[31m %s\033[0m" % e
+def checkorder(order):
+	if os.path.exists(order):
+		print "\033[35m backup is already install! \033[0m"
+		sys.exit(1)
 
+def install():
+	try:
+		for i in bin_file:
+			shutil.copyfile(os.path.join(bin_path, i), "/usr/bin/%s" % i)
+			os.chmod("/usr/bin/%s" % i, stat.S_IRWXU + stat.S_IXGRP + stat.S_IRGRP + stat.S_IROTH + stat.S_IXOTH)
+			print "\033[32m Install success! \033[0m"
+			print "\033[32m cp %s to /usr/bin/%s \033[0m" % (i, i)
+	except IOError, e:
+			print "\033[31m %s\033[0m" % e
+	
+if __name__ == '__main__':
+	if len(sys.argv) is 2:
+		if sys.argv[1] == 'update':
+			install()
+		else:
+			print "\033[31m Please check option! \033[0m"
+	elif len(sys.argv) is 1:
+		checkorder("/usr/bin/backup")
+		install()
+	else:
+		print "\033[31m Please check option! \033[0m"
