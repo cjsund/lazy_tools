@@ -18,6 +18,7 @@ install(){
 	mv -f backup /usr/bin/backup
 	if [ $? == 0 ]
 	then
+        chmod +x /usr/bin/backup
 		echo " Install seccess! "
 	fi
 }
