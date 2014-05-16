@@ -5,20 +5,29 @@ lazy_tools
 
  A tools for backup when you want to change file or path
 
- Example:
+ Before:
 
-	cp -r  tmp tmp_`date '+%Y%m%d%H%M%S'`_zhangsan
+	cp hosts hosts_`date '+%Y%m%d%H%M%S'`_zhangsan
 
-Now you only need to 'backup'
+ Or:
+
+ 	cp -r /etc/hosts /etc/hosts_`date '+%Y%m%d%H%M%S'`_zhangsan
+
+ Now:
+
+	 you only need a order 'backup'
 
 ### INSTALL
 
-	python install/local_install
+	git clone https://github.com/cjsund/lazy_tools.git
+	python lazy_tools/install/local_install
 
 ### USE
 
-	backup file
-	backup path
+	[lisi@localhost ~]$ backup hosts
+	[lisi@localhost ~]$ ls hosts*
+	hosts hosts_20140516120625_lisi
+	
 
 ### ME
 
