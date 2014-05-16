@@ -38,7 +38,9 @@ def backup(file_name):
 		else:
 			shutil.copytree(file_name, new_file_name)
 	except shutil.Error, e:
-		print e
+		print "\033[31m %s \033[0m" % e
+	except IOError, e:
+		print "\033[31m %s \033[0m" % e
 
 
 
