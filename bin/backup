@@ -8,23 +8,17 @@ import sys
 import shutil
 import time
 
-code_name = "backup"
-version = "0.1"
-website = "https://github.com/cjsund/lazy_tools"
-
 date_now = str(time.strftime("%Y%m%d%H%M%S"))
 whoami = str(os.getlogin())
 
-help = '''
-Name: %s Version: %s
-How to use?
-	backup src(abs path or Relative path of current path)
-	Like :cp abc abc_20140514182828_username
-
-Website: %s
-          ''' % (code_name, version, website)
-
 def backup(file_name):
+	'''
+Name: bakcup Version: 0.1.1
+usage:
+	backup src(abs path or Relative path of current path)
+
+Website: https://github.com/cjsund/lazy_tools
+    '''
 	name = os.path.basename(file_name)
 	if not os.path.exists(file_name):
 		print "\033[31m %s: No such file or directory\033[0m" % name
@@ -43,10 +37,8 @@ def backup(file_name):
 		print "\033[31m %s \033[0m" % e
 
 
-
-
 if len(sys.argv) is 1 or len(sys.argv) >= 3:
-	print help
+	print backup.__doc__
 else:
 	file_name = sys.argv[1]
 	backup(file_name)
