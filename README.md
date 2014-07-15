@@ -3,7 +3,7 @@ lazy_tools
 
 ### WHAT
 
- A tools for backup when you want to change file or path
+ A tools for backup when you want to change file or path in your linux
 
  Before:
 
@@ -16,6 +16,9 @@ lazy_tools
  Now:
 
 	 you only need a order 'backup'
+
+### NEED
+	Python 2.4
 
 ### INSTALL and UPDATE
 
