@@ -7,15 +7,15 @@ lazy_tools
 
  Before:
 
-	cp hosts hosts_`date '+%Y%m%d%H%M%S'`_zhangsan
+	cp hosts .hosts_`date '+%Y%m%d%H%M%S'`_zhangsan
 
  Or:
 
- 	cp -r /etc/hosts /etc/hosts_`date '+%Y%m%d%H%M%S'`_zhangsan
+ 	cp -r /etc/hosts /etc/.hosts_`date '+%Y%m%d%H%M%S'`_zhangsan
 
  Now:
 
-	 you only need a order 'backup'
+	 you only need a command 'backup'
 
 ### NEED
 	Python 2.4
