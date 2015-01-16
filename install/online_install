@@ -23,6 +23,11 @@ install(){
 	fi
 }
 
+if [[ `whoami` != 'root' ]]; then
+	echo "ERROR: You need as root!"
+	exit 2
+fi
+
 if [[ $# -eq 1 ]]; then
 	case "$1" in
 		update )

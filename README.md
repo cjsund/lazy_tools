@@ -33,6 +33,10 @@ lazy_tools
 
 #### update
 
+	backup -u
+
+ Or:
+
 	git pull
 	python lazy_tools/install/local_install update
 

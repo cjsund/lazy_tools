@@ -16,6 +16,8 @@ def backup(file_name):
 Name: bakcup Version: 0.1.2
 usage:
 	backup src(abs path or Relative path of current path)
+update:
+	backup -u
 
 Website: https://github.com/cjsund/lazy_tools
     '''
@@ -36,9 +38,12 @@ Website: https://github.com/cjsund/lazy_tools
 	except IOError, e:
 		print "\033[31m %s \033[0m" % e
 
-
-if len(sys.argv) is 1 or len(sys.argv) >= 3:
+argv = sys.argv
+if len(argv) is 1 or len(sys.argv) >= 3:
 	print backup.__doc__
+elif argv[1] == "-u":
+	os.popen('curl -sSL https://raw.githubusercontent.com/cjsund/lazy_tools/master/install/online_install | bash -s update')
+	#os.system('ls')
 else:
 	file_name = sys.argv[1]
 	backup(file_name)

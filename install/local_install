@@ -10,6 +10,11 @@ root_path = '/'.join(paths[:len(paths)-1])
 bin_path = os.path.join(root_path, 'bin')
 bin_file = os.listdir(bin_path)
 
+def checkuser():
+	if os.getlogin() is not "root":
+		print "Error: You need as root!"
+		sys.exit(1)
+
 def checkorder(order):
 	if os.path.exists(order):
 		print "\033[35m backup is already install! \033[0m"
@@ -26,6 +31,7 @@ def install():
 			print "\033[31m %s\033[0m" % e
 	
 if __name__ == '__main__':
+	checkuser()
 	if len(sys.argv) is 2:
 		if sys.argv[1] == 'update':
 			install()
